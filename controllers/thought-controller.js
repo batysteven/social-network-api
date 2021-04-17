@@ -15,7 +15,7 @@ const thoughtController = {
 
     // get one thought by id
     getThoughtById({ params }, res) {
-        Thought.findOne({ _id: params._id })
+        Thought.findOne({ _id: params.id })
             .sort({ _id: -1 })
             .then(dbThoughtData => res.json(dbThoughtData))
             .catch(err => {
@@ -28,7 +28,7 @@ const thoughtController = {
     createThought({ body }, res) {
         Thought.create(body)
         .then(dbThoughtData => res.json(dbThoughtData))
-        .cath(err => res.json(err));
+        .catch(err => res.json(err));
     },
 
     // update thought by id
