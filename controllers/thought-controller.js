@@ -54,7 +54,7 @@ const thoughtController = {
     // create reaction
     createReaction({ params, body}, res) {
         Thought.findByIdAndUpdate(
-            { _id: params.id },
+            { _id: params.thoughtId },
             { $addToSet: {reactions: body }},
             { new: true })
             .then(dbThoughtData => {
@@ -70,7 +70,7 @@ const thoughtController = {
     // delete reaction
     deleteReaction({ params, body}, res) {
         Thought.findByIdAndUpdate(
-            { _id: params.id}, 
+            { _id: params.thoughtId}, 
             {$pull: {reactions: body }}, 
             {new: true})
         .then(dbThoughtData => {
