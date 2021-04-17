@@ -56,7 +56,7 @@ const thoughtController = {
         Thought.findByIdAndUpdate(
             { _id: params.thoughtId },
             { $addToSet: {reactions: body }},
-            { new: true })
+            { new: true, runValidators: true })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     res.status(404).json({ message: 'No thought found with this id!'});
